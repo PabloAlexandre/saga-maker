@@ -1,0 +1,60 @@
+{
+  "name": "saga-maker",
+  "version": "0.0.1",
+  "description": "A simple Saga Maker to javascript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest src",
+    "test:coverage": "npm run test -- --coverage",
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint src",
+    "check": "npm run lint && npm run test:coverage",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloAlexandre/saga-maker.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run check"
+    }
+  },
+  "keywords": [
+    "saga",
+    "javascript",
+    "js",
+    "compensation",
+    "orchestration"
+  ],
+  "author": "Pablo Alexandre <pabloalexandre.nave@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PabloAlexandre/saga-maker/issues"
+  },
+  "homepage": "https://github.com/PabloAlexandre/saga-maker#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "git-cz": "^3.2.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,}"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testRegex": ".*\\.spec.(js)$",
+    "testEnvironment": "node",  
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/coverage/",
+      "/build/"
+    ]
+  }
+}
