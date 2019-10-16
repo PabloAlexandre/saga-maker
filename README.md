@@ -12,7 +12,7 @@ npm install --save saga-maker
 
 ## Usage
 
-To getting started, lets see a basic usage. Let's imaginate we have an online book store. Every time you register a book in system, you need to save in database, and also index this item in ElasticSearch for performatic searches. If for a reason you can't index in ElasticSearch, you need to remove this register from database to avoid inconsistency. You can implementate this using Saga Maker:
+To getting started, lets see a basic usage. Let's imagine we have an online book store. Every time you register a book in system, you need to save in database and also index this item in ElasticSearch for performatic searches. If for some reason the index on ElasticSearch failed and to avoid inconsistency, you need to remove the register from database. You can implementate this using Saga Maker:
 
 ```
 const SagaMaker = require('saga-maker');
@@ -46,8 +46,8 @@ In this example, we can see SagaSteps. SagaSteps help us to describe instruction
 | Property | Type     | Description       | Parameters |
 |----------|----------|-------------------| ---------- |
 | name     | String   | A identifier for this step. It's purely descritive | - |
-| run*     | Function | Callback to handle step execution. Will be invoked when this step starts | `initialPayload` - Payload passed when saga starts <br> `currentState` - Value returned from last step. Is null in first step <br> `state` - Global state of Saga. You can set global state inside `run`, using `this.state({ parameter: 'value' })`. Will merge with previous global state.
-| compensate | Function | Callback to compensate when some element of saga failed. Compensate works in pattern `n-1`, so if step failed, compensate will be invoked in previous step of saga. | `stepState` - Is value returned when this step has been executed. <br> `state` - Global state of Saga. <br> `initialPayload` - Payload passed when saga starts.
+| run*     | Function | Callback to handle step execution. It will be invoked when this step starts | `initialPayload` - Payload passed when saga starts <br> `currentState` - Value returned from last step. IT is null on first step <br> `state` - Global state of Saga. You can set global state inside `run`, using `this.state({ parameter: 'value' })`. It will merge with previous global state.
+| compensate | Function | Callback to compensate when some saga element failed. Compensate works on pattern `n-1`, so if the step failed, compensate will be invoked in previous step of saga. | `stepState` - Is value returned when this step has executed. <br> `state` - Global state of Saga. <br> `initialPayload` - Payload passed when saga starts.
 | retries  | Number   | Number of retries to execute `run` and `compensate`. Default value is `1`. | - | 
 
 
