@@ -48,10 +48,11 @@ In this example, we can see SagaSteps. SagaSteps help us to describe instruction
 | name     | String   | A identifier for this step. It's purely descritive | - |
 | run*     | Function | Callback to handle step execution. Will be invoked when this step starts | `initialPayload` - Payload passed when saga starts <br> `currentState` - Value returned from last step. Is null in first step <br> `state` - Global state of Saga. You can set global state inside `run`, using `this.state({ parameter: 'value' })`. Will merge with previous global state.
 | compensate | Function | Callback to compensate when some element of saga failed. Compensate works in pattern `n-1`, so if step failed, compensate will be invoked in previous step of saga. | `stepState` - Is value returned when this step has been executed. <br> `state` - Global state of Saga. <br> `initialPayload` - Payload passed when saga starts.
-| retries  | Number   | Number of retries to execute `run` and `compensate`. Default value is `1`. | - | 
+| retries   | Number   | Number of retries to execute `run`. Default value is `1`. | - | 
+| retryInterval  | Number   | Interval in milliseconds between retry executions. Default is `1000`. | - | 
 
 
-## Combining Sagas
+## Combining Sagas (Not implemented)
 
 You can combine sagas to create complex workflows. Each saga can works as saga steps:
 
